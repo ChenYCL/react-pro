@@ -13,22 +13,23 @@ const Home = memo(({history}) => {
     const [state, dispatch] = useReducer(reducer, initalState)
     // console.log(state)
 
-    const changeName = useCallback(()=>{
-        dispatch(setOne({name:'Yasuo'}))
-    },[state.name])
+    const changeName = useCallback(() => {
+        dispatch(setOne({name: 'Yasuo'}))
+    }, [])
 
     return (
         <div>
-            <p>Home</p>
+            <h1>Home Page</h1>
             <TestContext.Provider value={'！！！！！i am context！！！！！'}>
                 <Counter/>
             </TestContext.Provider>
-            <p onClick={goAboutPage}>
-                点击跳转到about
-            </p>
+
+            <div onClick={goAboutPage} style={{textDecoration: 'underline', color: 'green'}}>
+                Click to About Page
+            </div>
 
             <div>age ：{state.age}，name：{state.name}</div>
-            <button style={{border:'1px solid red'}} onClick={changeName}>change name</button>
+            <button style={{border: '1px solid red'}} onClick={changeName}>change name</button>
 
         </div>
     )

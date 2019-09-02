@@ -1,23 +1,31 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import user from './user'
+import {
+    User,
+    Home,
+    About
+} from './index'
 import thunk from "redux-thunk";
 import {logger} from 'redux-logger'
 
+// 作用于全局的state 模块。
 const rootReducer = combineReducers({
-    user,
+    User,
+    Home,
+    About
     // ...
 })
 
 const middlewares = [thunk];
-let  store = null;
+let store = null;
 if (process.env.NODE_ENV === `development`) {
     middlewares.push(logger);
-} else {}
+} else {
+}
 
-if(process.env.NODE_ENV === `development`){
+if (process.env.NODE_ENV === `development`) {
     store = compose(composeWithDevTools(applyMiddleware(...middlewares)))(createStore)(rootReducer);
-}else {
+} else {
     // production env
     store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer); // remove devtools && logger
 }

@@ -17,6 +17,7 @@ export const setOne = (data) => {
 // reducers
 const reducer = (state = initalState, action) => {
     const {type, payload} = action;
+    console.log(type,payload)
     switch (type) {
         case SET_ONE:
             return Object.assign({}, state, {...payload})
