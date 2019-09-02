@@ -17,7 +17,6 @@ const AppRouter = () => {
                 <Suspense fallback={<Loading/>}>
                     <Route path="/" exact component={Home}/>
                     <Route path="/About" component={About}/>
-                    {/*<Route path="/shopCar" component={B}  />*/}
                 </Suspense>
             </Router>
         </Provider>

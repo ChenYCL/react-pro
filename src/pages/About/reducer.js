@@ -17,7 +17,6 @@ export const setHobby = (hobbies) => {
 // reducer
 const reducer = (state = initialState, action) => {
     const {type, payload} = action;
-    console.log(type, payload);
     switch (type) {
         case SET_HOBBIES:
             return {...state,...payload}
