@@ -9,13 +9,11 @@ const rootReducer = combineReducers({
     // ...
 })
 
-const middlewares = [];
+const middlewares = [thunk];
 let  store = null;
 if (process.env.NODE_ENV === `development`) {
     middlewares.push(logger);
-} else {
-    middlewares.push(thunk)
-}
+} else {}
 
 if(process.env.NODE_ENV === `development`){
     store = compose(composeWithDevTools(applyMiddleware(...middlewares)))(createStore)(rootReducer);
