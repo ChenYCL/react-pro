@@ -9,12 +9,27 @@
 3. hooks相关 react-redux
 4. redux-thunk thunk等
 
-
 ## UI 
+1.antd引入并按需加载
+```$xslt
 
-
-
-
+//安装依赖 yarn add babel-plugin-import --save-dev， package.json 
+ "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
+      ]
+    ]
+  }
+2.布局添加
+```
 
 ## 权限控制
 

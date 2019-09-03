@@ -4,20 +4,29 @@ import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import store from './store/store'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import Loading from "./components/Loading";
+import View from "./view/layout/index";
 
+
+// lazy
 const Home = lazy(() => import('./pages/Home/index'));
 const About = lazy(() => import('./pages/About/index'));
+const NotFound = import('./pages/404/index')
 
 const AppRouter = () => {
     return (
         <Provider store={store}>
             <Router>
-                <Suspense fallback={<Loading/>}>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/About" component={About}/>
-                </Suspense>
+                <Switch>
+                    <View>
+                        <Suspense fallback={<Loading/>}>
+                            <Route path="/" exact component={Home}/>
+                            <Route path="/About" component={About}/>
+                        </Suspense>
+                        {/*<Redirect from="*" to="/NotFound" component={NotFound}/>*/}
+                    </View>
+                </Switch>
             </Router>
         </Provider>
     )
