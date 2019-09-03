@@ -62,7 +62,7 @@ class AuthRouter extends React.Component {
         const {component: Component, User, ...rest} = this.props
         console.log(this.props);
         // const isLogged = sessionStorage.getItem("isLogin") === "1" ? true : false;
-        const isLogged =User.status.isLogined
+        const isLogged =User.status.isLogined  // 初步模拟数据用户是否登陆，如未登陆，则跳转到login
         console.log(rest)
         return (
             <Route exact {...rest} render={props => {

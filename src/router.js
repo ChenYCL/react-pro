@@ -11,7 +11,7 @@ const About = lazy(() => import('./pages/About/index'));
 const routerConfig = [
     {
         path: '/About',
-        auth: false,
+        auth: false,  // 当前是否拥有路由现实权限 否 则显示没有权限
         title: '关于',
         component: About
     },
