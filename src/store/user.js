@@ -1,6 +1,9 @@
-const initialState={
-    name:'Owen',
-    age:25
+const initialState = {
+    uid: 122,
+    password: true,
+    status: {
+        isLogined: true
+    }
 }
 
 // constant
@@ -8,11 +11,11 @@ const UPDATE_USER = 'UPDATE_USER'
 
 
 // action
-export const updateUser = (user)=>{
+export const updateUser = (user) => {
     // async
     return {
-        type:UPDATE_USER,
-        payload:user
+        type: UPDATE_USER,
+        payload: user
     }
 
     // ===========asynchrony=============
@@ -26,11 +29,11 @@ export const updateUser = (user)=>{
 }
 
 // reducer
-const reducer = (state = initialState,action)=>{
-    const {type,payload} = action;
+const reducer = (state = initialState, action) => {
+    const {type, payload} = action;
     switch (type) {
         case UPDATE_USER:
-            return {...state,...payload}
+            return {...state, ...payload}
         default:
             return state
     }
