@@ -8,6 +8,7 @@
 2. react-router-dom
 3. hooks相关 react-redux
 4. redux-thunk thunk等
+5. axios
 
 ## UI 
 1.antd引入并按需加载

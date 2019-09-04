@@ -29,7 +29,7 @@ const App = () => {
                             {
                                 RouteList.map((route, idx) => {
                                     const {path, auth, title, component: Component} = route;
-                                    console.log(path, auth, title, Component)
+                                    // console.log(path, auth, title, Component)
                                     return (
                                         auth
                                             ? <AuthRouter

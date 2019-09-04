@@ -4,15 +4,27 @@ import {Breadcrumb} from "antd";
 class ReactBreadcrumb extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            BreadList: [
+                'Home',
+                'List',
+                'App'
+            ]
+        }
     }
+
 
     render() {
         return (
             <Breadcrumb style={{margin: '16px 0'}}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
+                {
+                    this.state.BreadList.map((item, key) => (
+                        <Breadcrumb.Item key={key}>
+                            {item}
+                        </Breadcrumb.Item>
+                    ))
+                }
+
             </Breadcrumb>
         )
     }

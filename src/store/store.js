@@ -3,16 +3,18 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import {
     User,
     Home,
-    About
+    About,
+    Menu
 } from './index'
 import thunk from "redux-thunk";
 import {logger} from 'redux-logger'
 
-// 作用于全局的state 模块。
+// 作用于全局的state 模块。 可以使用 import * as reducers from './index' ,之后接构 ...reducers 但结构不清晰
 const rootReducer = combineReducers({
     User,
     Home,
-    About
+    About,
+    Menu
     // ...
 })
 
