@@ -39,11 +39,12 @@
 
 ## 代码约束
 
-    eslint+prettier
-    commit - pre
-
-## 权限控制
+    1.eslint+prettier
+    2.增加commit提交前约束
+    3.格式化
 
 ## 文件结构
 
 ## 部署
+
+docker

@@ -81,13 +81,13 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
-      "prettier --trailing-comma es5 --single-quote --write",
+      "prettier --trailing-comma es5  --write",
       "eslint",
       "git add"
     ],
