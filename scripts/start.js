@@ -14,7 +14,6 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
-
 const fs = require('fs');
 const chalk = require('react-dev-utils/chalk');
 const webpack = require('webpack');
@@ -115,12 +114,12 @@ checkBrowsers(paths.appPath, isInteractive)
       }
 
       // We used to support resolving modules according to `NODE_PATH`.
-      // This now has been deprecated in favor of jsconfig/tsconfig.json
+      // This now has been deprecated in favor of jsconfig/.prettierrc.json
       // This lets you use absolute paths in imports inside large monorepos:
       if (process.env.NODE_PATH) {
         console.log(
           chalk.yellow(
-            'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or tsconfig.json if you are using TypeScript) and will be removed in a future major release of create-react-app.'
+            'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or .prettierrc.json if you are using TypeScript) and will be removed in a future major release of create-react-app.'
           )
         );
         console.log();

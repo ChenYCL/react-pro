@@ -1,9 +1,5 @@
-import {createContext} from 'react'
+import { createContext } from 'react';
 
+const TestContext = createContext();
 
-const TestContext = createContext()
-
-
-export {
-    TestContext
-};
+export { TestContext };

@@ -1,0 +1,12 @@
+
+
+.idea
+*.iml
+dist/
+node_modules
+*.log
+run
+logs/
+coverage/
+config/
+scripts/

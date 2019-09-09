@@ -9,6 +9,7 @@
     "@typescript-eslint/parser": "1.13.0",
     "antd": "^3.23.0",
     "autoprefixer": "^9.6.1",
+    "axios": "^0.19.0",
     "babel-eslint": "10.0.2",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.6",
@@ -73,7 +74,26 @@
   "scripts": {
     "start": "PORT=8090 node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "lint": "eslint .  --ext .js,.jsx",
+    "fix": "eslint .  --fix .js",
+    "prettier": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,json,md,css,scss}'"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "eslint",
+      "git add"
+    ],
+    "run/*": [
+      "git rm --cached"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -151,5 +171,17 @@
         }
       ]
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "http-proxy-middleware": "^0.20.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "1.18.2",
+    "typescript": "^3.6.2"
   }
 }
