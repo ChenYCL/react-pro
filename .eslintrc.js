@@ -12,7 +12,7 @@ module.exports = {
     'react/prop-types': 'off',
     //使用key做关键字
     'react/no-array-index-key': 0,
-    'import/no-mutable-exports': [1], //imutable数据
+    'import/no-mutable-exports': 1, //imutable数据
     // 关闭airbnb对于必须添加prop-types的校验
     'no-use-before-define': 1,
     'react/no-unescaped-entities': 0, //安全escape
@@ -31,7 +31,7 @@ module.exports = {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 2 : 1,
-    'import/prefer-default-export': 1, //建议default导出
+    'import/prefer-default-export': 0, //建议default导出
     'spaced-comment': 0, //注释要求检测关闭
     // 关闭要求一个表达式必须换行的要求，和Prettier冲突了
     'react/jsx-wrap-multilines': 'off', // 关闭要求jsx属性中写jsx必须要加括号，和Prettier冲突了

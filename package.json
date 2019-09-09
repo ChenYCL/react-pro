@@ -77,7 +77,7 @@
     "test": "node scripts/test.js",
     "lint": "eslint .  --ext .js,.jsx",
     "fix": "eslint .  --fix .js",
-    "prettier": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,json,md,css,scss}'"
+    "prettier": "prettier --trailing-comma es5  --write '**/*.{js,json,css,scss}'"
   },
   "husky": {
     "hooks": {

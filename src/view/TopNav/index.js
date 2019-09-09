@@ -27,7 +27,11 @@ const TopNav = () => {
                 key={index}
                 activeClassName={activeClassName}
                 onClick={() =>
-                  dispatch(toggleTopMenu({ currentTopSelectedIndex: index }))
+                  dispatch(
+                    toggleTopMenu({
+                      currentTopSelectedIndex: index,
+                    })
+                  )
                 }
               >
                 {name}

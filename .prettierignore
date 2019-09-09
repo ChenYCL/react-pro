@@ -3,7 +3,7 @@
 .idea
 *.iml
 dist/
-node_modules
+node_modules/
 *.log
 run
 logs/
