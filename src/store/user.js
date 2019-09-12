@@ -1,20 +1,18 @@
 const initialState = {
-  uid: 122,
-  password: true,
-  status: {
-    isLogined: true,
-  },
+  user: {},
+  isAuth: false,
 };
 
 // constant
-const UPDATE_USER = 'UPDATE_USER';
+const LOGIN_IN = 'LOGIN_IN';
+const LOGIN_OUT = 'LOGIN_OUT';
 
 // action
-export const updateUser = user => {
+export const loginIn = decode => {
   // async
   return {
-    type: UPDATE_USER,
-    payload: user,
+    type: LOGIN_IN,
+    payload: decode,
   };
 
   // ===========asynchrony=============
@@ -27,12 +25,35 @@ export const updateUser = user => {
   // }
 };
 
+// 退出登陆
+export const loginOut = () => {
+  return {
+    type: LOGIN_OUT,
+  };
+};
+
+// 登陆账号
+// export const loginIn = ()=>{
+//   return (dispatch,getState)=>{
+//     const
+//   }
+// };
 // reducer
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case UPDATE_USER:
-      return { ...state, ...payload };
+    case LOGIN_IN:
+      return {
+        ...state,
+        user: payload,
+        isAuth: true,
+      };
+    case LOGIN_OUT:
+      return {
+        ...state,
+        user: {},
+        isAuth: false,
+      };
     default:
       return state;
   }

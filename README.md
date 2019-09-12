@@ -1,50 +1,78 @@
+# Untitled
+
 ## 支持
 
-- sass 支持
-- redux 支持
-- 路由支持
+---
+
+- [x] sass 支持
+- [x] redux
+- [x] 登陆
+- [ ] 注册
+- [x] 路由表配置
 
 ## 依赖
 
-1. classnames
-2. react-router-dom
-3. hooks 相关 react-redux
-4. redux-thunk thunk 等
-5. axios
+---
+
+- classnames
+- react-router-dom
+- hooks 相关 react-redux
+- redux-thunk thunk
+- axios
+
+### mock
+
+- mocker-api
+- express
 
 ## UI
 
+---
+
 1.antd 引入并按需加载
 
-```$xslt
+安装依赖 yarn add babel-plugin-import --save-dev， package.json
 
-//安装依赖 yarn add babel-plugin-import --save-dev， package.json
- "babel": {
+    "babel": {
     "presets": [
-      "react-app"
+    "react-app"
     ],
     "plugins": [
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "style": "css"
-        }
-      ]
+    [
+    "import",
+    {
+    "libraryName": "antd",
+    "style": "css"
+    }
     ]
-  }
+    ]
+    }
+
 2.布局添加
-3.postcss autoprefix支持
-```
+3.postcss autoprefix 支持
+
+## mock
+
+---
+
+    npm run mock
 
 ## 代码约束
 
-    1.eslint+prettier
-    2.增加commit提交前约束
-    3.格式化
+---
+
+- eslint+prettier
+- 增加 commit 提交前约束
+- 格式化
 
 ## 文件结构
 
+---
+
+wating
+
 ## 部署
+
+---
 
 docker

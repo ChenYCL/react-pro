@@ -7,6 +7,7 @@ module.exports = {
     // prettier配置
   ],
   rules: {
+    'no-debugger': 2,
     'react/jsx-filename-extension': 'off',
     // 关闭airbnb对于jsx必须写在jsx文件中的设置
     'react/prop-types': 'off',
@@ -16,9 +17,10 @@ module.exports = {
     // 关闭airbnb对于必须添加prop-types的校验
     'no-use-before-define': 1,
     'react/no-unescaped-entities': 0, //安全escape
-    'react/jsx-one-expression-per-line': 0,
-    'react/prefer-stateless-function': 0,
-    'react/jsx-curly-newline': 0,
+    'react/jsx-one-expression-per-line': 0, // 自动换行
+    'react/prefer-stateless-function': 0, // 避免class组件
+    'react/jsx-curly-newline': 0, // 颗粒化调用换行
+    'no-else-return': 0, //else中必须有return
     'react/destructuring-assignment': [
       0,
       'always',
@@ -30,7 +32,7 @@ module.exports = {
     'react/jsx-curly-brace-presence': 2,
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
-    'no-console': process.env.NODE_ENV === 'production' ? 2 : 1,
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     'import/prefer-default-export': 0, //建议default导出
     'spaced-comment': 0, //注释要求检测关闭
     // 关闭要求一个表达式必须换行的要求，和Prettier冲突了

@@ -15,6 +15,7 @@ import View from './view/layout/index';
 import AuthRouter from './untils/AuthRouter';
 import Login from './pages/Login';
 import RouteList from './router';
+import './untils/avoidFreshLoseInfo';
 
 // lazy
 

@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './About.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setHobby } from './reducer';
+import user from '../../api/user';
 
 // import {bindActionCreators} from 'redux'
 // 多个 建议采用useMemo 配合bindActionCreators 优化
@@ -9,7 +10,7 @@ import { setHobby } from './reducer';
 // memo优化
 const About = React.memo(function About() {
   const state = useSelector(_state => _state.About);
-  console.log(state);
+  // console.log(state);
   const dispatch = useDispatch();
   // 使用useCallback进行记忆
   const changeHobbies = useCallback(() => {
@@ -27,6 +28,11 @@ const About = React.memo(function About() {
             actionB:actionB
         })
     },[dispatch]) */
+
+  useEffect(() => {
+    console.log(user, 99999);
+    user.test({ name: 1, age: 23 });
+  }, []);
 
   return (
     <div>
