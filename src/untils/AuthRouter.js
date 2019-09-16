@@ -10,6 +10,7 @@ class AuthRouter extends React.Component {
     const { isAuth } = User; // 初步模拟数据用户是否登陆，如未登陆，则跳转到login
     // console.log(rest);
     console.log(isAuth);
+    console.log(this.props);
     return (
       <Route
         exact
