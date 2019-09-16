@@ -46,7 +46,9 @@
     ]
     }
 
+
 2.布局添加
+
 3.postcss autoprefix 支持
 
 ## mock
@@ -67,7 +69,7 @@
 
 ---
 
-wating
+waiting
 
 ## 部署
 
