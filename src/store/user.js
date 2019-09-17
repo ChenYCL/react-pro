@@ -38,6 +38,7 @@ export const loginOut = () => {
 //     const
 //   }
 // };
+
 // reducer
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;

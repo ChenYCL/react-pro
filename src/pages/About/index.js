@@ -30,7 +30,6 @@ const About = React.memo(function About() {
     },[dispatch]) */
 
   useEffect(() => {
-    console.log(user, 99999);
     user.test({ name: 1, age: 23 });
   }, []);
 

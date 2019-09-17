@@ -14,7 +14,7 @@ const LoginForm = props => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('登陆信息', values);
         const { username, password } = values;
         // 登陆存入redux中
         console.log(props);
@@ -27,7 +27,7 @@ const LoginForm = props => {
             // 解析token
             const decoded = jwtDecode(token);
             dispatch(loginIn(decoded)); // update user state
-            history.push('/');
+            history.replace('/');
           })
           .catch(error => {
             // eslint-disable-next-line no-alert

@@ -7,6 +7,7 @@ import {
   Route,
   Redirect,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
@@ -14,49 +15,45 @@ import Loading from './components/Loading'; // loading
 import View from './view/layout/index';
 import AuthRouter from './untils/AuthRouter';
 import Login from './pages/Login';
+import Register from './pages/register';
 import RouteList from './router';
 import './untils/avoidFreshLoseInfo';
 
-// lazy
+// lazy import
 
-const NotFound = import('./pages/404/index');
-
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          {/* <Route path="/register" component={Register}></Route>*/}
-          <View>
-            <Suspense fallback={<Loading />}>
-              {/*登录权限控制组件*/}
-              {RouteList.map((route, idx) => {
-                const { path, auth, title, component: Component } = route;
-                // console.log(path, auth, title, Component)
-                return auth ? (
-                  <AuthRouter
-                    path={path}
-                    title={title}
-                    component={Component}
-                    key={idx}
-                  />
-                ) : (
-                  <Route
-                    key={idx}
-                    path={path}
-                    render={() => <div>未开放</div>}
-                  />
-                );
-              })}
-            </Suspense>
-            {/* <Redirect from="*" to="/NotFound" component={NotFound}/> */}
-          </View>
-        </Switch>
-      </Router>
-    </Provider>
-  );
-};
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" component={Register} />
+            {/*窗体包裹 view */}
+            <View>
+              <Suspense fallback={<Loading />}>
+                {/*登录权限控制组件*/}
+                {RouteList.map((route, idx) => {
+                  const { path, auth, title, component: Component } = route;
+                  return (
+                    <AuthRouter
+                      path={path}
+                      title={title}
+                      auth={auth}
+                      component={Component}
+                      key={idx}
+                    />
+                  );
+                })}
+              </Suspense>
+              {/* <Redirect from="*" to="/NotFound" component={NotFound}/> */}
+            </View>
+          </Switch>
+        </Router>
+      </Provider>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

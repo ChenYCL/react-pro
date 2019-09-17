@@ -7,19 +7,25 @@ import { lazy } from 'react';
 
 const Home = lazy(() => import('./pages/Home/index'));
 const About = lazy(() => import('./pages/About/index'));
-
+const Info = lazy(() => import('./pages/Info/index'));
 const routerConfig = [
-  {
-    path: '/About',
-    auth: false, // 当前是否拥有路由现实权限 否 则显示没有权限
-    title: '关于',
-    component: About,
-  },
   {
     path: '/',
     auth: true,
     title: '主页',
     component: Home,
+  },
+  {
+    path: '/About',
+    auth: true, // 当前是否拥有路由现实权限 否 则显示没有权限
+    title: '关于',
+    component: About,
+  },
+  {
+    path: '/Info',
+    auth: false, // 当前是否拥有路由现实权限 否 则显示没有权限
+    title: '信息',
+    component: Info,
   },
 ];
 

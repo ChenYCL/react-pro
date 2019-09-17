@@ -94,6 +94,33 @@ const initialState = {
         },
       ],
     },
+    {
+      to: '/Info',
+      activeClassName: 'nav-selected',
+      name: 'Info',
+      index: 2,
+      sideMenuList: [
+        // 联动 顶部联动 左侧导航
+        {
+          title: 'info-1',
+          key: 'sub1',
+          to: '/sub1',
+          iconType: 'user',
+          options: [
+            {
+              key: '1',
+              name: 'info-option1',
+              to: '/sub1/1',
+            },
+            {
+              key: '2',
+              name: 'info-option2',
+              to: '/sub2/2',
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 
