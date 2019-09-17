@@ -32,7 +32,7 @@ module.exports = {
     'react/jsx-curly-brace-presence': 2,
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
-    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 1 : 0,
     'import/prefer-default-export': 0, //建议default导出
     'spaced-comment': 0, //注释要求检测关闭
     // 关闭要求一个表达式必须换行的要求，和Prettier冲突了

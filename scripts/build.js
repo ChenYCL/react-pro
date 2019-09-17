@@ -166,7 +166,7 @@ function build(previousFileSizes) {
       ) {
         console.log(
           chalk.yellow(
-            '\nTreating warnings as errors because process.env.CI = true.\n' +
+            '\nTreating warnings as errors because .env.CI = true.\n' +
               'Most CI servers set it automatically.\n'
           )
         );

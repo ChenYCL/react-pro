@@ -2,13 +2,8 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { Provider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-  withRouter,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NProgress from 'nprogress';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 import Loading from './components/Loading'; // loading
@@ -22,6 +17,14 @@ import './untils/avoidFreshLoseInfo';
 // lazy import
 
 class App extends React.Component {
+  componentWillUpdate() {
+    NProgress.start();
+  }
+
+  componentDidUpdate() {
+    NProgress.done();
+  }
+
   render() {
     return (
       <Provider store={store}>

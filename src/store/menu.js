@@ -87,7 +87,7 @@ const initialState = {
             },
             {
               key: '4',
-              name: 'aobut-option2-2',
+              name: 'about-option2-2',
               to: '/sub2/2',
             },
           ],

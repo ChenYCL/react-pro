@@ -7,6 +7,12 @@
 - [x] 登陆
 - [ ] 注册
 - [x] 路由表配置
+- [x] DllPlugin 拆分第三方
+- [x] 打包进度
+- [x] compress 引入打包输出 gzip
+- [x] 依赖分析工具引入
+- [x] 打包进度显示
+- [x] 热加载使用 react-hot-loader 替换
 
 ## 依赖
 
@@ -17,6 +23,7 @@
 - hooks 相关 react-redux
 - redux-thunk thunk
 - axios
+- nprogress
 
 ### mock
 
@@ -54,7 +61,17 @@
 
 ---
 
-    npm run mock
+    yarn run mock
+
+## 指令
+
+    yarn dll 第三方依赖抽取
+    yarn prod:build 生产环境打包
+    yarn dev:build 开发环境打包
+    yarn start 开发环境模拟启动
+    yarn link 检查代码错误
+    yarn fix 尝试修复
+    yarn prettier 自动格式化代码
 
 ## 代码约束
 
