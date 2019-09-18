@@ -4,11 +4,8 @@ import { Route, Redirect } from 'react-router-dom';
 
 class AuthRouter extends React.Component {
   render() {
-    console.log(this.props);
     const { component: Component, User, auth, ...rest } = this.props;
-    // console.log(this.props);
     const { isAuth } = User; // 初步模拟数据用户是否登陆，如未登陆，则跳转到login
-    // console.log(rest);
     // 登陆情况下
     if (isAuth) {
       return (

@@ -2,7 +2,12 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from 'react-router-dom';
 import NProgress from 'nprogress';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
@@ -26,9 +31,10 @@ class App extends React.Component {
   }
 
   render() {
+    const supportsHistory = 'pushState' in window.history;
     return (
       <Provider store={store}>
-        <Router>
+        <Router forceRefresh={!supportsHistory}>
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/register" component={Register} />
@@ -43,7 +49,7 @@ class App extends React.Component {
                       path={path}
                       title={title}
                       auth={auth}
-                      component={Component}
+                      component={withRouter(Component)}
                       key={idx}
                     />
                   );

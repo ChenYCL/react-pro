@@ -106,18 +106,7 @@ const initialState = {
           key: 'sub1',
           to: '/sub1',
           iconType: 'user',
-          options: [
-            {
-              key: '1',
-              name: 'info-option1',
-              to: '/sub1/1',
-            },
-            {
-              key: '2',
-              name: 'info-option2',
-              to: '/sub2/2',
-            },
-          ],
+          options: null,
         },
       ],
     },

@@ -1,21 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout, Menu } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import './TopNav.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTopMenu } from '../../store/menu';
 
-const TopNav = () => {
+const TopNav = props => {
+  let selectedKey = '0';
+  const { location } = props;
   const { Header } = Layout;
   const NavLinkList = useSelector(state => state.Menu.NavLinkList);
+  const currentTopMenuIndex = useSelector(
+    state => state.Menu.currentTopSelectedIndex
+  );
   const dispatch = useDispatch();
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/':
+        document.title = '客群系统';
+        break;
+      case '/About':
+        document.title = '关于';
+        break;
+      case '/Info':
+        document.title = '信息';
+        break;
+      default:
+        break;
+    }
+  }, [location]);
+  // eslint-disable-next-line array-callback-return
+  NavLinkList.map(item => {
+    if (item.to === location.pathname && item.index !== currentTopMenuIndex) {
+      selectedKey = item.index;
+      dispatch(
+        toggleTopMenu({
+          currentTopSelectedIndex: item.index,
+        })
+      );
+    }
+  });
   return (
     <Header className="header">
       <div className="logo" />
       <Menu
         theme="dark"
         mode="horizontal"
-        defaultSelectedKeys={['0']}
+        defaultSelectedKeys={[`${selectedKey}`]}
         style={{ lineHeight: '64px' }}
       >
         {NavLinkList.map(nav => {
@@ -44,4 +75,4 @@ const TopNav = () => {
   );
 };
 
-export default TopNav;
+export default withRouter(TopNav);

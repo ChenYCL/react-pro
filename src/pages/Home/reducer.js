@@ -1,7 +1,7 @@
 const SET_ONE = 'SET_ONE';
 
 export const initalState = {
-  name: '葫芦娃',
+  name: '一个男人',
   age: 18,
 };
 
