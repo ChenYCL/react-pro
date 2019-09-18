@@ -48,6 +48,7 @@ const SideNav = props => {
           defaultSelectedKeys={['1']} // 选中子项
           defaultOpenKeys={['sub1']} // 选中左侧首项
           style={{ height: '100%', borderRight: 0 }}
+          theme="dark"
         >
           {menuCreate}
         </Menu>

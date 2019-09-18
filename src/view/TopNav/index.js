@@ -14,21 +14,19 @@ const TopNav = props => {
     state => state.Menu.currentTopSelectedIndex
   );
   const dispatch = useDispatch();
-  useEffect(() => {
-    switch (location.pathname) {
-      case '/':
-        document.title = '客群系统';
-        break;
-      case '/About':
-        document.title = '关于';
-        break;
-      case '/Info':
-        document.title = '信息';
-        break;
-      default:
-        break;
-    }
-  }, [location]);
+  switch (location.pathname) {
+    case '/':
+      document.title = '客群系统';
+      break;
+    case '/About':
+      document.title = '关于';
+      break;
+    case '/Info':
+      document.title = '信息';
+      break;
+    default:
+      break;
+  }
   // eslint-disable-next-line array-callback-return
   NavLinkList.map(item => {
     if (item.to === location.pathname && item.index !== currentTopMenuIndex) {
