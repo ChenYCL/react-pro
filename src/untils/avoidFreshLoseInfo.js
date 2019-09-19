@@ -13,8 +13,7 @@ if (localStorage.jwToken) {
   // 检测token过期
   // 获取当前时间
   const currentTime = Date.now() / 1000; //由毫秒转成秒
-  // console.log(decoded);
-  // console.log(currentTime);
+
   // 判断当前时间是否大于token中的exp时间;如果大于是为过期
   if (decoded.exp < currentTime) {
     // 过期

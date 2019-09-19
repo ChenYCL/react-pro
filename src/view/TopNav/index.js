@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Layout, Menu } from 'antd';
 import { NavLink, withRouter } from 'react-router-dom';
 import './TopNav.scss';
@@ -7,35 +7,34 @@ import { toggleTopMenu } from '../../store/menu';
 
 const TopNav = props => {
   let selectedKey = '0';
-  const { location } = props;
+  const { location, history } = props;
   const { Header } = Layout;
   const NavLinkList = useSelector(state => state.Menu.NavLinkList);
-  const currentTopMenuIndex = useSelector(
-    state => state.Menu.currentTopSelectedIndex
-  );
   const dispatch = useDispatch();
-  switch (location.pathname) {
-    case '/':
-      document.title = '客群系统';
-      break;
-    case '/About':
-      document.title = '关于';
-      break;
-    case '/Info':
-      document.title = '信息';
-      break;
-    default:
-      break;
-  }
+  const NavClick = useCallback(
+    idx => {
+      dispatch(toggleTopMenu({ currentTopSelectedIndex: idx }));
+      if (NavLinkList[idx].sideMenuList[0].options) {
+        const { to } = NavLinkList[idx].sideMenuList[0].options[0];
+        console.log(to);
+        history.push(to);
+      } else {
+        // 无3级菜单
+        history.push(NavLinkList[idx].sideMenuList[0].to);
+        console.log(NavLinkList[idx].sideMenuList[0].to);
+      }
+    },
+    [NavLinkList, dispatch, history]
+  );
   // eslint-disable-next-line array-callback-return
   NavLinkList.map(item => {
-    if (item.to === location.pathname && item.index !== currentTopMenuIndex) {
+    // 直接跳地址校验选中状态顶部
+    if (
+      location.pathname
+        .toLowerCase()
+        .includes(item.routeType.toLocaleLowerCase())
+    ) {
       selectedKey = item.index;
-      dispatch(
-        toggleTopMenu({
-          currentTopSelectedIndex: item.index,
-        })
-      );
     }
   });
   return (
@@ -50,21 +49,13 @@ const TopNav = props => {
         {NavLinkList.map(nav => {
           const { to, activeClassName, name, index } = nav;
           return (
-            <Menu.Item key={index}>
-              <NavLink
-                to={to}
-                key={index}
-                activeClassName={activeClassName}
-                onClick={() =>
-                  dispatch(
-                    toggleTopMenu({
-                      currentTopSelectedIndex: index,
-                    })
-                  )
-                }
-              >
-                {name}
-              </NavLink>
+            <Menu.Item
+              key={index}
+              to={to}
+              activeClassName={activeClassName}
+              onClick={() => NavClick(index)}
+            >
+              {name}
             </Menu.Item>
           );
         })}

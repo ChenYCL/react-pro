@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
 });
 
 const middlewares = [thunk];
+// eslint-disable-next-line
 let store = null;
 if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
