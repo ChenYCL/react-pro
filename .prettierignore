@@ -12,3 +12,5 @@ config/
 scripts/
 yarn.lock
 yarn-error.log
+build
+dll

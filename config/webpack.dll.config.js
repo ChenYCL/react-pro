@@ -23,7 +23,7 @@ module.exports = {
             // 'enquire-js',
             // 'es6-promise',
             // 'good-storage',
-            'nprogress',
+            '@tanem/react-nprogress',
             // 'numeral',
             // 'path-to-regexp',
         ],

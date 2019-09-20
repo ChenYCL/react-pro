@@ -21,7 +21,7 @@
 - hooks 相关 react-redux
 - redux-thunk thunk
 - axios
-- nprogress
+- @tanem/react-nprogress
 
 ### mock
 
@@ -67,7 +67,7 @@
     yarn prod:build 生产环境打包
     yarn dev:build 开发环境打包
     yarn start 开发环境模拟启动
-    yarn link 检查代码错误
+    yarn lint 检查代码错误
     yarn fix 尝试修复
     yarn prettier 自动格式化代码
 

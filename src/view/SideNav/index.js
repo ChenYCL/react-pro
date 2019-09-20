@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ReactContent from '../Content';
 import { updateMenuStatus } from '../../store/menu';
 
-const SideNav = props => {
+const SideNav = memo(props => {
   const dispatch = useDispatch();
-  const { history, location } = props;
+  const { history } = props;
   const { SubMenu } = Menu;
   const { Sider } = Layout;
   const {
@@ -20,7 +20,6 @@ const SideNav = props => {
 
   // sideMenuList有二级可选菜单时
   const menuCreate = sideMenuList.map((opt, idx) => {
-    // console.log(opt, idx);
     const { title, iconType, to } = opt;
     return opt.options ? (
       <SubMenu
@@ -31,9 +30,11 @@ const SideNav = props => {
             {title}
           </span>
         }
-        onTitleClick={() =>
-          dispatch(updateMenuStatus({ openKey: to, selectedKey }))
-        }
+        onTitleClick={() => {
+          dispatch(
+            updateMenuStatus({ openKey: to !== openKey ? to : [], selectedKey })
+          );
+        }}
       >
         {opt.options.map(item => {
           return (
@@ -52,21 +53,20 @@ const SideNav = props => {
         })}
       </SubMenu>
     ) : (
-      <Menu.Item key={to} onClick={() => history.push(to)}>
+      <Menu.Item
+        key={to}
+        onClick={() => {
+          dispatch(updateMenuStatus({ openKey: to, selectedKey: to }));
+          history.push(to);
+        }}
+      >
         <Icon type={iconType} />
         <span>{title}</span>
       </Menu.Item>
     );
   });
-  console.log(location.pathname, openKey, selectedKey);
-  if (location.pathname !== selectedKey) {
-    dispatch(
-      updateMenuStatus({
-        openKey: `/${location.pathname.split('/')[1]}`,
-        selectedKey: location.pathname,
-      })
-    );
-  }
+
+  console.log(selectedKey, 'sideNav..............');
   return (
     <Layout>
       <Sider width={200} style={{ background: '#fff' }}>
@@ -84,6 +84,6 @@ const SideNav = props => {
       <ReactContent>{props.children}</ReactContent>
     </Layout>
   );
-};
+});
 
 export default withRouter(SideNav);

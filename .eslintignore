@@ -2,3 +2,5 @@
 /scripts
 /node_modules
 /src/serviceWorker.js
+/build
+/dll

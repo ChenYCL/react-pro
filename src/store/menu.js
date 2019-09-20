@@ -156,6 +156,7 @@ const reducer = (state = initialState, action) => {
     case TOGGLE_TOP_MENU:
       return { ...state, ...payload };
     case UPDATE_MENU_STATUS:
+      // eslint-disable-next-line no-debugger
       return { ...state, ...payload };
     default:
       return state;
