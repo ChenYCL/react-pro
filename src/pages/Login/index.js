@@ -27,7 +27,7 @@ const LoginForm = props => {
             // 解析token
             const decoded = jwtDecode(token);
             dispatch(loginIn(decoded)); // update user state
-            history.replace('/');
+            history.replace('/Home1/a');
           })
           .catch(error => {
             // eslint-disable-next-line no-alert

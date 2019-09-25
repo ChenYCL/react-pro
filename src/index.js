@@ -2,7 +2,12 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 import Index from './components/Loading'; // loading
@@ -64,8 +69,6 @@ class App extends React.Component {
                       />
                     );
                   })}
-                  {/*重定向*/}
-                  {/*<Redirect to="/Home1/a" />*/}
                 </Suspense>
               </View>
             </Switch>

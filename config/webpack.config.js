@@ -63,12 +63,12 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // ********************************************************************
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 
-function pathResolve (dir) {
+function pathResolve(dir) {
     return path.resolve(__dirname, '..', dir)
 }
 
 //检测文件或者文件夹存在
-function fsExistsSync (path) {
+function fsExistsSync(path) {
     try {
         fs.accessSync(path, fs.F_OK)
     } catch (e) {
@@ -80,7 +80,7 @@ function fsExistsSync (path) {
 const makePlugins = (publicPath) => {
     const plugins = []
     const hasDll = fsExistsSync('./dll')
-    if(hasDll){
+    if (hasDll) {
         const files = fs.readdirSync(pathResolve('./dll'))
 
         files.forEach(file => {
@@ -521,7 +521,17 @@ module.exports = function (webpackEnv) {
                                     sourceMap: isEnvProduction && shouldUseSourceMap,
                                 },
                                 'sass-loader'
-                            ),
+                            ).concat([
+                                {
+                                    loader: "sass-resources-loader",
+                                    options: {
+                                        resources: [
+                                            path.join(__dirname, "../src/assets/css/common.scss"),
+                                            path.join(__dirname, "../src/assets/css/config.scss"),
+                                        ]
+                                    }
+                                }
+                            ]),
                             // Don't consider CSS imports dead code even if the
                             // containing package claims to have no side effects.
                             // Remove this when webpack adds a warning or an error for this.
